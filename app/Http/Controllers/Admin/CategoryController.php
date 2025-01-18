@@ -97,8 +97,7 @@ class CategoryController extends Controller
 
     public function getSlug(Request $request)
     {
-        $slug = $this->createSlug($request, Category::class);
-
+         $slug = $this->createSlug($request, Category::class);
         return response()->json(['slug' => $slug]);
     }
 }

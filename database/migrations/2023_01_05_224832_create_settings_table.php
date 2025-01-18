@@ -15,15 +15,12 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('site_name')->nullable();
-            $table->string('contact_email')->nullable();
+            $table->string('field_name')->unique();
+            $table->text('field_value')->nullable();
+            $table->string('category')->nullable();
+            $table->string('type');
+            $table->string('url')->nullable();
             $table->text('description')->nullable();
-            $table->text('about')->nullable();
-            $table->string('copy_rights')->nullable();
-            $table->string('url_fb')->nullable();
-            $table->string('url_insta')->nullable();
-            $table->string('url_twitter')->nullable();
-            $table->string('url_linkedin')->nullable();
             $table->timestamps();
         });
     }

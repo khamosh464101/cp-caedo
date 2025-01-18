@@ -2,14 +2,14 @@
 
     <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-            <h1 class="w-full text-3xl text-black pb-6">Posts</h1>
+            <h1 class="w-full text-3xl text-black pb-6">Eventa</h1>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
                     <i class="fas fa-list mr-3"></i> Search Results
                 </p>
                 @if($posts->isNotEmpty())
-                <div class="w-full bg-white text-left p-4 mb-2">Found {{ $posts->total() }} Records in Posts</div>
+                <div class="w-full bg-white text-left p-4 mb-2">Found {{ $posts->total() }} Records in Events</div>
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
                         <thead>

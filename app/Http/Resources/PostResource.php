@@ -15,6 +15,9 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'image' => $this->image,
+            'thumpnail1' => $this->thumpnail1,
+            'thumpnail2' => $this->thumpnail2,
+            'tp' => $this->tp,
             'slug' => $this->slug,
             'created_at' => $this->created_at,
             $this->mergeWhen($routeShowPost, [

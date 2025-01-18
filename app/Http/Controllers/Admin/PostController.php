@@ -52,11 +52,21 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post_data = $request->safe()->except('image');
+        $post_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
 
         if ($request->hasfile('image')) {
             $get_file = $request->file('image')->store('images/posts');
             $post_data['image'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail1')) {
+            $get_file = $request->file('thumpnail1')->store('images/posts');
+            $post_data['thumpnail1'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail2')) {
+            $get_file = $request->file('thumpnail2')->store('images/posts');
+            $post_data['thumpnail2'] = $get_file;
         }
 
         $post = Post::create($post_data);
@@ -91,11 +101,21 @@ class PostController extends Controller
      */
     public function update(PostRequest $request, Post $post)
     {
-        $post_data = $request->safe()->except('image');
-
+        $post_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
+    
         if ($request->hasfile('image')) {
             $get_file = $request->file('image')->store('images/posts');
             $post_data['image'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail1')) {
+            $get_file = $request->file('thumpnail1')->store('images/posts');
+            $post_data['thumpnail1'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail2')) {
+            $get_file = $request->file('thumpnail2')->store('images/posts');
+            $post_data['thumpnail2'] = $get_file;
         }
 
         $post->update($post_data);

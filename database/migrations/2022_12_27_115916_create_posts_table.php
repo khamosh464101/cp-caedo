@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('content');
             $table->string('image')->nullable();
+            $table->string('thumpnail1')->nullable();
+            $table->string('thumpnail2')->nullable();
+            $table->text('tp')->nullable();
             $table->boolean('status');
             $table->integer('views')->default(0);
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');

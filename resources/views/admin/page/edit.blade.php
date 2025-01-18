@@ -43,6 +43,10 @@
                 <button type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded">Update Page</button>
                 </form>
             </div>
+
+        </main>
+        <main class="w-full flex-grow p-6">
+            <h1 class="w-full text-2xl text-black capitalize">{{$page->name}} contents</h1>
         </main>
     </div>
 

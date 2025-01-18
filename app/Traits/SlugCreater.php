@@ -10,7 +10,12 @@ trait SlugCreater
 {
     public function createSlug(Request $request, $model)
     {
-        $slug = Str::slug($model == Post::class ? $request->title : $request->name);
+        $slug = '';
+         if ($model == Project::class) {
+            $slug = Str::slug($request->title);
+         } else {
+            $slug = Str::slug($model == Post::class ? $request->title : $request->name);
+         }
 
         if ($model::where('slug', $slug)->exists()) {
             $slug = $slug . '-' . Str::random(2);

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'image', 'category_id', 'user_id', 'slug', 'status'];
+    protected $fillable = ['title', 'content', 'image', 'thumpnail1', 'thumpnail2', 'tp', 'category_id', 'user_id', 'slug', 'status'];
+
 
     protected function createdAt(): Attribute
     {
@@ -40,6 +41,16 @@ class Post extends Model
         return $value ? asset("storage/$value") : asset('import/assets/post-pic-dummy.png');
     }
 
+    public function getThumpnail1Attribute($value)
+    {
+        return $value ? asset("storage/$value") : asset('import/assets/post-pic-dummy.png');
+    }
+
+    public function getThumpnail2Attribute($value)
+    {
+        return $value ? asset("storage/$value") : asset('import/assets/post-pic-dummy.png');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -63,6 +74,7 @@ class Post extends Model
         return $this->morphMany(Comment::class, 'commentable');
     }
 
+
     public static function boot()
     {
         parent::boot();
@@ -70,10 +82,26 @@ class Post extends Model
             if ($post->isDirty('image') && !is_null($post->getRawOriginal('image'))) {
                 Storage::delete($post->getRawOriginal('image'));
             }
+
+            if ($post->isDirty('thumpnail1') && !is_null($post->getRawOriginal('thumpnail1'))) {
+                Storage::delete($post->getRawOriginal('thumpnail1'));
+            }
+
+            if ($post->isDirty('thumpnail2') && !is_null($post->getRawOriginal('thumpnail2'))) {
+                Storage::delete($post->getRawOriginal('thumpnail2'));
+            }
         });
         static::deleting(function ($post) {
             if (!is_null($post->getRawOriginal('image'))) {
                 Storage::delete($post->getRawOriginal('image'));
+            }
+
+            if (!is_null($post->getRawOriginal('thumpnail1'))) {
+                Storage::delete($post->getRawOriginal('thumpnail1'));
+            }
+
+            if (!is_null($post->getRawOriginal('thumpnial2'))) {
+                Storage::delete($post->getRawOriginal('thumpnial2'));
             }
         });
     }

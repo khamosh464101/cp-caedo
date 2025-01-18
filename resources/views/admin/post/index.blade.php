@@ -2,15 +2,22 @@
 
     <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-            <h1 class="w-full text-3xl text-black pb-6">Posts</h1>
+            <h1 class="w-full text-3xl text-black pb-6">Events</h1>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Posts Records
+                    <i class="fas fa-list mr-3"></i> Events Records
                 </p>
                 @can('create', 'App\Models\Post')
-                    <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2"
-                        onclick="location.href='{{ route('admin.post.create') }}';">Add Post</button>
+                   <div class="flex justify-between">
+                   <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2"
+                        onclick="location.href='{{ route('admin.post.create') }}';">Add Event</button>
+                    
+                    <div class=" flex gap-6" >
+                    <a href="{{ route('admin.category.index') }}" class="px-4 py-1 text-white font-light tracking-wider bg-gray-600 hover:bg-gray-800 rounded mb-2"><i class="fas fa-sticky-note mr-3"></i> Categories</a>
+                    <a href="{{ route('admin.tag.index') }}" class="px-4 py-1 text-white font-light tracking-wider bg-gray-600 hover:bg-gray-800 rounded mb-2"> <i class="fas fa-tag mr-3"></i> Tags</a>
+                    </div>
+                   </div>
                 @endcan
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">

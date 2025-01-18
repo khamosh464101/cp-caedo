@@ -27,10 +27,13 @@ class PostRequest extends FormRequest
         return [
             'title' => ['required', 'min:3'],
             'content' => ['required', 'min:20'],
+            'tp' => ['nullable', 'min:20'],
             'category_id' => ['required', 'exists:categories,id'],
             'slug' => ['required', Rule::unique('posts')->ignore($this?->post?->id)],
             'status' => ['required', 'boolean'],
-            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:2048', Rule::requiredIf(!$this?->post?->id)],
+            'image' => ['image', 'mimes:webp', 'max:600', Rule::requiredIf(!$this?->post?->id)],
+            'thumpnail1' => ['image', 'mimes:webp', 'max:400', Rule::requiredIf(!$this?->post?->id)],
+            'thumpnail2' => ['image', 'mimes:webp', 'max:400', Rule::requiredIf(!$this?->post?->id)],
             'tags' => ['exists:tags,id'],
             'user_id' => ['required', 'exists:users,id']
         ];

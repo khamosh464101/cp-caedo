@@ -13,7 +13,7 @@ class ApiCategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::paginate(15);
+        $categories = Category::get();
 
         return $this->retrieveResponse(data: CategoryResource::collection($categories));
     }

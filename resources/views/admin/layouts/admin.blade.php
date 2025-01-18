@@ -10,6 +10,21 @@
 
     <!-- Tailwind -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script
+      src="https://cdn.tiny.cloud/1/70jrdoqcfp25kfgh7k60aw31mvh5yddhkkhr9v7rqwfxd939/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+
+    <script>
+      tinymce.init({
+        selector: "#mytextarea",
+        menubar: false,
+        plugins: "lists link image charmap print preview",
+        toolbar:
+          "undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image",
+        height: 300,
+      });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 
@@ -69,7 +84,7 @@
             </a>
             <button onclick="location.href='{{ route('admin.post.create') }}';"
                 class="w-full bg-white cta-btn font-semibold py-2 mt-1 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Post
+                <i class="fas fa-plus mr-3"></i> New Event
             </button>
         </div>
         <nav class="text-white text-base font-semibold">
@@ -78,28 +93,59 @@
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
-            @can('admin-only')
-                <a href="{{ route('admin.category.index') }}"
-                    class="{{ request()->routeIs('*.category.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white py-4 pl-6 nav-item">
-                    <i class="fas fa-sticky-note mr-3"></i>
-                    Categories
-                </a>
-            @endcan
+            
             <a href="{{ route('admin.post.index') }}"
                 class="{{ request()->routeIs('*.post.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
-                <i class="fas fa-newspaper mr-3"></i>
-                Posts
+                <i class="fas fa-calendar mr-3"></i>
+                Events
             </a>
-            <a href="{{ route('admin.tag.index') }}"
-                class="{{ request()->routeIs('*.tag.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
-                <i class="fas fa-tag mr-3"></i>
-                Tags
+            <a href="{{ route('admin.project.index') }}"
+                class="{{ request()->routeIs('*.project.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                <i class="fas fa-calendar mr-3"></i>
+                Project Update
             </a>
+
             @can('admin-only')
-                <a href="{{ route('admin.page.index') }}"
+            <a href="{{ route('admin.stakeholder.index') }}"
+                    class="{{ request()->routeIs('*.stakeholder.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-republican mr-3"></i>
+                    Stakeholders
+                </a>
+                <!-- <a href="{{ route('admin.page.index') }}"
                     class="{{ request()->routeIs('*.page.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
                     <i class="far fa-file mr-3"></i>
                     Pages
+                </a> -->
+                <a href="{{ route('admin.team.index') }}"
+                    class="{{ request()->routeIs('*.team.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-pen mr-3"></i>
+                    Team members
+                </a>
+                <a href="{{ route('admin.mutahid.index') }}"
+                    class="{{ request()->routeIs('*.mutahid.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-file-audio mr-3"></i>
+                    Audit Reports
+                </a>
+                <!-- <a href="{{ route('admin.publication.index') }}"
+                    class="{{ request()->routeIs('*.publication.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-republican mr-3"></i>
+                    Publications
+                </a> -->
+                <a href="{{ route('admin.faq.index') }}"
+                    class="{{ request()->routeIs('*.faq.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-question mr-3"></i>
+                 
+                    FAQs
+                </a>
+                <a href="{{ route('admin.procurement.index') }}"
+                    class="{{ request()->routeIs('*.procurement.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-truck mr-3"></i>
+                    Procurements
+                </a>
+                <a href="{{ route('admin.vacancy.index') }}"
+                    class="{{ request()->routeIs('*.vacancy.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <i class="fa fa-chair mr-3"></i>
+                    Vacancies
                 </a>
                 <a href="{{ route('admin.role.index') }}"
                     class="{{ request()->routeIs('*.role.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
@@ -321,6 +367,41 @@
         </script>
     @endif
 
+    @if (request()->routeIs('*.project.create') || request()->routeIs('*.project.edit'))
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <script>
+            $('#summernote').summernote({
+                placeholder: 'Hello ..!',
+                tabsize: 2,
+                height: 120,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'video']],
+                    ['view', ['codeview', 'help']]
+                ]
+            });
+        </script>
+        <script>
+            $('#title').change(function(e) {
+                $.get('{{ route('admin.project.getslug') }}', {
+                        'title': $(this).val()
+                    },
+                    function(data) {
+                        $('#slug').val(data.slug);
+                    }
+                );
+            });
+        </script>
+    @endif
+
     @if (request()->routeIs('*.category.create') || request()->routeIs('*.category.edit'))
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
             integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
@@ -333,6 +414,24 @@
                     },
                     function(data) {
                         $('#slug').val(data.slug);
+                    }
+                );
+            });
+        </script>
+    @endif
+
+    @if (request()->routeIs('*.pcategory.create') || request()->routeIs('*.pcategory.edit'))
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script>
+            $('#pname').change(function(e) {
+                $.get('{{ route('admin.pcategory.getslug') }}', {
+                        'name': $(this).val()
+                    },
+                    function(data) {
+                        $('#pslug').val(data.slug);
                     }
                 );
             });
@@ -373,6 +472,7 @@
                 ]
             });
         </script>
+        
     @endif
 
 </body>
