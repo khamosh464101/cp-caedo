@@ -22,7 +22,8 @@ class Project extends Model
         'status',
         'views',
         'category_id',
-        'user_id'
+        'user_id',
+        'date'
     ];
 
     protected function createdAt(): Attribute

@@ -31,6 +31,7 @@ class ProjectRequest extends FormRequest
             'status' => ['required', 'boolean'],
             'image' => ['image', 'mimes:webp', 'max:600', Rule::requiredIf(!$this?->project?->id)],
             'thumpnail1' => ['image', 'mimes:webp', 'max:400', Rule::requiredIf(!$this?->project?->id)],
+            'date' => ['required', 'date'],
             'user_id' => ['required', 'exists:users,id']
         ];
     }

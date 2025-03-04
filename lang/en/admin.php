@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'created' => 'Record Created !',
+    'updated' => 'Record Updated !',
+    'deleted' => 'Record Deleted !',
     'category_created' => 'Category Created !',
     'category_updated' => 'Category Updated !',
     'category_deleted' => 'Category Deleted !',

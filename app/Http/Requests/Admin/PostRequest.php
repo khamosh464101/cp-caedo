@@ -35,6 +35,7 @@ class PostRequest extends FormRequest
             'thumpnail1' => ['image', 'mimes:webp', 'max:400', Rule::requiredIf(!$this?->post?->id)],
             'thumpnail2' => ['image', 'mimes:webp', 'max:400', Rule::requiredIf(!$this?->post?->id)],
             'tags' => ['exists:tags,id'],
+            'date' => ['required', 'date'],
             'user_id' => ['required', 'exists:users,id']
         ];
     }

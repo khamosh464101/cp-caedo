@@ -52,10 +52,15 @@
                     </select>
                 </div>
                 
+                
                 <div class="mb-2">
                     <label class="block text-sm text-gray-600" for="message">Detail Image (770X407)</label>
                     <input type="file" id="myimage" name="image">
 
+                </div>
+                <div class="mb-1">
+                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                    <input type="date" id="date" value="{{ old('date') }}" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                 </div>
                 </div>
 
@@ -67,6 +72,7 @@
                     <label class="block text-sm text-gray-600" for="message">Message</label>
                     <textarea id="mytextarea" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="message" name="content" >{{ old('content') }}</textarea>
                 </div>
+                
                 <button type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded">Add Event</button>
                 </form>
             </div>

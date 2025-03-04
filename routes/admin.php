@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MutahidUpdateController;
 use App\Http\Controllers\Admin\StakeholderController;
 use App\Http\Controllers\Admin\ExatraController;
+use App\Http\Controllers\Admin\ResearchController;
 
 Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/')->group(function () {
     // This Roles can manage with Admin & Writers with specific policies.
@@ -40,7 +41,8 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/')->gro
         'faq' => FaqController::class,
         'team' => TeamController::class,
         'setting' => SettingController::class,
-        'exatra' => ExatraController::class
+        'exatra' => ExatraController::class,
+        'research' => ResearchController::class
     ]);
     Route::resource('/account', AccountController::class, ['only' => ['index', 'update']]);
     // Special To Admin Role Only

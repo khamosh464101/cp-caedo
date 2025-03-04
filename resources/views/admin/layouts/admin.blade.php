@@ -89,81 +89,86 @@
         </div>
         <nav class="text-white text-base font-semibold">
             <a href="{{ route('admin.index') }}"
-                class="{{ request()->routeIs('admin.index') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white py-4 pl-6 nav-item">
+                class="{{ request()->routeIs('admin.index') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white py-2 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
             </a>
             
             <a href="{{ route('admin.post.index') }}"
-                class="{{ request()->routeIs('*.post.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                class="{{ request()->routeIs('*.post.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Events
             </a>
             <a href="{{ route('admin.project.index') }}"
-                class="{{ request()->routeIs('*.project.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                class="{{ request()->routeIs('*.project.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Project Update
             </a>
 
             @can('admin-only')
             <a href="{{ route('admin.stakeholder.index') }}"
-                    class="{{ request()->routeIs('*.stakeholder.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.stakeholder.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-republican mr-3"></i>
                     Stakeholders
                 </a>
                 <!-- <a href="{{ route('admin.page.index') }}"
-                    class="{{ request()->routeIs('*.page.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.page.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="far fa-file mr-3"></i>
                     Pages
                 </a> -->
                 <a href="{{ route('admin.team.index') }}"
-                    class="{{ request()->routeIs('*.team.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.team.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-pen mr-3"></i>
                     Team members
                 </a>
                 <a href="{{ route('admin.mutahid.index') }}"
-                    class="{{ request()->routeIs('*.mutahid.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.mutahid.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-file-audio mr-3"></i>
                     Audit Reports
                 </a>
+                <a href="{{ route('admin.research.index') }}"
+                    class="{{ request()->routeIs('*.research.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
+                    <i class="fa fa-file-audio mr-3"></i>
+                    Research
+                </a>
                 <!-- <a href="{{ route('admin.publication.index') }}"
-                    class="{{ request()->routeIs('*.publication.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.publication.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-republican mr-3"></i>
                     Publications
                 </a> -->
                 <a href="{{ route('admin.faq.index') }}"
-                    class="{{ request()->routeIs('*.faq.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.faq.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-question mr-3"></i>
                  
                     FAQs
                 </a>
                 <a href="{{ route('admin.procurement.index') }}"
-                    class="{{ request()->routeIs('*.procurement.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.procurement.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-truck mr-3"></i>
                     Procurements
                 </a>
                 <a href="{{ route('admin.vacancy.index') }}"
-                    class="{{ request()->routeIs('*.vacancy.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.vacancy.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fa fa-chair mr-3"></i>
                     Vacancies
                 </a>
                 <a href="{{ route('admin.exatra.index') }}"
-                    class="{{ request()->routeIs('*.exatra.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.exatra.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <span class="mdi mdi-dots-horizontal mr-3"></span>
                     Exatra
                 </a>
                 <a href="{{ route('admin.role.index') }}"
-                    class="{{ request()->routeIs('*.role.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.role.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fas fa-user-shield mr-3"></i>
                     Roles
                 </a>
                 <a href="{{ route('admin.user.index') }}"
-                    class="{{ request()->routeIs('*.user.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.user.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fas fa-users mr-3"></i>
                     Users
                 </a>
                 <a href="{{ route('admin.setting.index') }}"
-                    class="{{ request()->routeIs('*.setting.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    class="{{ request()->routeIs('*.setting.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-2 pl-6 nav-item">
                     <i class="fas fa-wrench mr-3"></i>
                     Settings
                 </a>
@@ -172,7 +177,7 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button
-                class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+                class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-2">
                 <i class="fas fa-arrow-circle-left mr-3"></i>
                 Sign Out
             </button>

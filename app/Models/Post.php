@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'image', 'thumpnail1', 'thumpnail2', 'tp', 'category_id', 'user_id', 'slug', 'status'];
+    protected $fillable = ['title', 'content', 'image', 'thumpnail1', 'thumpnail2', 'tp', 'category_id', 'user_id', 'slug', 'status', 'date'];
 
 
     protected function createdAt(): Attribute
