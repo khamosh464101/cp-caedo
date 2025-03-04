@@ -55,7 +55,7 @@
                                     <td class="py-4 px-6 border-b border-grey-light">
                                         <div class="flex flex-wrap">
                                             @forelse ($post->tags as $tag)
-                                                <a href="{{ route('tag.show', $tag->name) }}"
+                                                <a href="{{ route('admin.tag.show', $tag->name) }}"
                                                     class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">
                                                     <div
                                                         class="text-xs font-normal leading-none max-w-full flex-initial">

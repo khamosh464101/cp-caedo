@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\ProcurementController as ApiProcurementController;
 use App\Http\Controllers\Api\MutahidUpdateController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\StakeholderController;
+use App\Http\Controllers\Api\ExatraController;
 use Illuminate\Support\Facades\Route;
 
 //Public Api Routes
@@ -35,3 +36,4 @@ Route::get('/itbs', [ApiProcurementController::class, 'itbs']);
 Route::get('/noas', [ApiProcurementController::class, 'noas']);
 Route::apiResource('/settings', SettingController::class, ['only' => ['index']]);
 Route::apiResource('/stakeholders',StakeholderController::class, ['only' => ['index', 'show']]);
+Route::apiResource('/exatras',ExatraController::class, ['only' => ['index', 'show']]);

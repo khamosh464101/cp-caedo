@@ -147,6 +147,11 @@
                     <i class="fa fa-chair mr-3"></i>
                     Vacancies
                 </a>
+                <a href="{{ route('admin.exatra.index') }}"
+                    class="{{ request()->routeIs('*.exatra.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
+                    <span class="mdi mdi-dots-horizontal mr-3"></span>
+                    Exatra
+                </a>
                 <a href="{{ route('admin.role.index') }}"
                     class="{{ request()->routeIs('*.role.*') ? 'active-nav-link' : 'opacity-75 hover:opacity-100' }} flex items-center text-white  py-4 pl-6 nav-item">
                     <i class="fas fa-user-shield mr-3"></i>

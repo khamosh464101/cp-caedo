@@ -20,7 +20,7 @@
 
                 <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white ">
                     <div class="px-10 py-6">
-                        <div class="font-bold text-xl mb-2 text-center">Posts</div>
+                        <div class="font-bold text-xl mb-2 text-center">Events</div>
                         <p class="text-gray-700 text-5xl text-center">
                             {{ $posts }}
                         </p>
@@ -45,14 +45,14 @@
                     </div>
                 </div>
 
-                <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white ">
+                <!-- <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white ">
                     <div class="px-10 py-6">
                         <div class="font-bold text-xl mb-2 text-center">NewsLetter Subcribes</div>
                         <p class="text-gray-700 text-5xl text-center">
                             {{ $news_letter_users }}
                         </p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </main>

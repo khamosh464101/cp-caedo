@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Post;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
