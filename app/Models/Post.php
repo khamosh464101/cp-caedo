@@ -20,6 +20,9 @@ class Post extends Model
             get: fn($value) => Carbon::parse($value)->diffForHumans()
         );
     }
+    public function getDateAttribute($value) {
+        return Carbon::parse($value)->format('M d, Y');
+    }
 
     public function scopePublished($query)
     {

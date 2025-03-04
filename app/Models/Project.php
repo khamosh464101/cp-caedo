@@ -33,6 +33,10 @@ class Project extends Model
         );
     }
 
+    public function getDateAttribute($value) {
+        return Carbon::parse($value)->format('M d, Y');
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', true);

@@ -23,6 +23,7 @@ class ProjectResourse extends JsonResource
             'thumpnail1' => $this->thumpnail1,
             'tp' => $this->tp,
             'slug' => $this->slug,
+            'date' => $this->date,
             'created_at' => $this->created_at,
             $this->mergeWhen($routeShowPost, [
                 'content' => $this->content

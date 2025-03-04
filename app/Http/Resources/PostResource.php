@@ -20,6 +20,7 @@ class PostResource extends JsonResource
             'tp' => $this->tp,
             'slug' => $this->slug,
             'created_at' => $this->created_at,
+            'date' => $this->date,
             $this->mergeWhen($routeShowPost, [
                 'content' => $this->content,
                 'comments' => CommentResource::collection($this->whenLoaded('comments'))
