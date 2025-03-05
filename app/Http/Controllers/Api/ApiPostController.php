@@ -24,7 +24,7 @@ class ApiPostController extends Controller
             $query->whereHas('tags', function ($query) use ($slug) {  
                 $query->where('name', $slug);  
             });  
-        })->whereStatus(true)->orderByDesc('id')->paginate(3);
+        })->whereStatus(true)->orderByDesc('date')->paginate(3);
 
         return $this->retrieveResponse(data: PostResource::collection($posts));
     }

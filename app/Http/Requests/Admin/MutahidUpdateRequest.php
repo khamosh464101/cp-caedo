@@ -24,8 +24,8 @@ class MutahidUpdateRequest extends FormRequest
     {
         return [
             'year' => ['required', 'integer'],
-            'file' => [ 'file', 'mimes:pdf', 'max:10000', Rule::requiredIf(!$this?->mutahidUpdate?->id)],
-            'image' => [ 'image', 'mimes:jpg,png,jpeg,webp', 'max:400', Rule::requiredIf(!$this?->mutahidUpdate?->id)],
+            'file' => [ 'file', 'mimes:pdf', 'max:100000', Rule::requiredIf(!$this?->mutahid?->id)],
+            'image' => [ 'image', 'mimes:jpg,png,jpeg,webp', 'max:400', Rule::requiredIf(!$this?->mutahid?->id)],
             'is_mutahid_dfi' => ['boolean'],
             'user_id' => ['required', 'exists:users,id'],
             'published' => ['required', 'boolean'],

@@ -14,7 +14,7 @@ class MutahidUpdateController extends Controller
 
     public function index()
     {
-        $audits = MutahidUpdate::get();
+        $audits = MutahidUpdate::where('published', true)->get();
 
         return response($audits);
     }

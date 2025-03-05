@@ -20,7 +20,7 @@ class ProjectController extends Controller
             $query->whereHas('category', function ($query) use ($slug) {  
                 $query->where('slug', $slug);  
             });  
-        })->whereStatus(true)->orderByDesc('id')->paginate(6);
+        })->whereStatus(true)->orderByDesc('date', 'desc')->paginate(6);
 
         return $this->retrieveResponse(data: ProjectResourse::collection($projects));
     }
