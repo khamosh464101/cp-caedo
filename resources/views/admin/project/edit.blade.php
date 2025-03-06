@@ -40,6 +40,10 @@
                     <label class="block text-sm text-gray-600" for="message">Thumpnail 1 (371X252)</label>
                     <input type="file" id="myimage" name="thumpnail1">
                 </div>
+                <div class="mb-2">
+                    <label class="block text-sm text-gray-600" for="message">Thumpnail 2 (371X252)</label>
+                    <input type="file" id="myimage" name="thumpnail2">
+                </div>
       
   
                     <div class="mb-2">
@@ -49,7 +53,7 @@
                     </div>
                     <div class="mb-1">
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-                    <input type="date" id="date" value="{{ $project->date }}" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                    <input type="date" id="date" value="{{ date('Y-m-d', strtotime($project->date)) }}" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                 </div>
                 </div>
        

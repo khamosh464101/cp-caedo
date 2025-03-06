@@ -18,6 +18,7 @@ class Project extends Model
         'content',
         'image',
         'thumpnail1',
+        'thumpnail2',
         'tp',
         'status',
         'views',
@@ -62,6 +63,11 @@ class Project extends Model
         return $value ? asset("storage/$value") : asset('import/assets/post-pic-dummy.png');
     }
 
+    public function getThumpnail2Attribute($value)
+    {
+        return $value ? asset("storage/$value") : asset('import/assets/post-pic-dummy.png');
+    }
+
 
     public function category()
     {
@@ -87,6 +93,10 @@ class Project extends Model
                 Storage::delete($post->getRawOriginal('thumpnail1'));
             }
 
+            if ($post->isDirty('thumpnail2') && !is_null($post->getRawOriginal('thumpnail2'))) {
+                Storage::delete($post->getRawOriginal('thumpnail2'));
+            }
+
         });
         static::deleting(function ($post) {
             if (!is_null($post->getRawOriginal('image'))) {
@@ -95,6 +105,10 @@ class Project extends Model
 
             if (!is_null($post->getRawOriginal('thumpnail1'))) {
                 Storage::delete($post->getRawOriginal('thumpnail1'));
+            }
+
+            if (!is_null($post->getRawOriginal('thumpnail2'))) {
+                Storage::delete($post->getRawOriginal('thumpnail2'));
             }
         });
     }

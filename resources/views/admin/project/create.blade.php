@@ -39,6 +39,10 @@
                     <label class="block text-sm text-gray-600" for="message">Thumpnail 1 (371X252)</label>
                     <input type="file" id="myimage" name="thumpnail1">
                 </div>
+                <div class="mb-2">
+                    <label class="block text-sm text-gray-600" for="message">Thumpnail 2 (371X252)</label>
+                    <input type="file" id="myimage" name="thumpnail2">
+                </div>
 
 
                 

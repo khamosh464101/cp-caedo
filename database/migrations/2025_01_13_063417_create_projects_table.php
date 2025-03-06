@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->string('thumpnail1')->nullable();
+            $table->string('thumpnail2')->nullable();
             $table->text('tp')->nullable();
             $table->boolean('status');
             $table->integer('views')->default(0);

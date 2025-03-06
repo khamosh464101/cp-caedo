@@ -51,7 +51,7 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
 
-        $project_data = $request->safe()->except(['image', 'thumpnail1']);
+        $project_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
 
         if ($request->hasfile('image')) {
             $get_file = $request->file('image')->store('images/projects');
@@ -61,6 +61,11 @@ class ProjectController extends Controller
         if ($request->hasfile('thumpnail1')) {
             $get_file = $request->file('thumpnail1')->store('images/projects');
             $project_data['thumpnail1'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail2')) {
+            $get_file = $request->file('thumpnail2')->store('images/projects');
+            $project_data['thumpnail2'] = $get_file;
         }
 
         $project = Project::create($project_data);
@@ -99,6 +104,11 @@ class ProjectController extends Controller
         if ($request->hasfile('thumpnail1')) {
             $get_file = $request->file('thumpnail1')->store('images/projects');
             $project_data['thumpnail1'] = $get_file;
+        }
+
+        if ($request->hasfile('thumpnail2')) {
+            $get_file = $request->file('thumpnail2')->store('images/projects');
+            $project_data['thumpnail2'] = $get_file;
         }
 
         $project->update($project_data);
