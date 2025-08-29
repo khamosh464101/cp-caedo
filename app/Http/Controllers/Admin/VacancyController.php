@@ -34,11 +34,21 @@ class VacancyController extends Controller
     public function store(VacancyRequest $request)
     {
         $vacancy_data = $request->safe()->except('file');
-
+        
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/vacancy');
+            // Get the file from the request
+            $file = $request->file('file');
+            
+            // Generate the new file name
+            $new_file_name = $this->generateFileName($file);
+            
+            // Store the file with the new name
+            $get_file = $file->storeAs('pdfs/vacancy', $new_file_name);
+            
+            // Add the file path to the vacancy data
             $vacancy_data['file'] = $get_file;
         }
+
 
         $vacancy = Vacancy::create($vacancy_data);
 
@@ -65,16 +75,43 @@ class VacancyController extends Controller
      */
     public function update(VacancyRequest $request, Vacancy $vacancy)
     {
+        // Get the request data excluding the 'file' field
         $vacancy_data = $request->safe()->except('file');
-
+    
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/vacancy');
+            // Get the file from the request
+            $file = $request->file('file');
+            
+            // Generate the new file name
+            $new_file_name = $this->generateFileName($file);
+            
+            // Store the file with the new name
+            $get_file = $file->storeAs('pdfs/vacancy', $new_file_name);
+            
+            // Add the file path to the vacancy data
             $vacancy_data['file'] = $get_file;
         }
-
+    
+        // Update the vacancy with the new data
         $vacancy->update($vacancy_data);
+    
+        // Redirect with a success message
         return to_route('admin.vacancy.index')->with('message', trans('admin.vacancy_updated'));
     }
+    
+    public function generateFileName($file)
+    {
+        // Get the original file name (without extension)
+        $file_name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        
+        // Get the current timestamp in 'yy-m-d-H-i-s' format
+        $timestamp = now()->format('y-m-d-H-i-s');
+        
+        // Create the new file name with the timestamp
+        return $file_name . '-' . $timestamp . '.' . $file->getClientOriginalExtension();
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

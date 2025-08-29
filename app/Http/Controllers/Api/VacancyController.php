@@ -13,13 +13,13 @@ class VacancyController extends Controller
 
     public function vacancies()
     {
-         $vacancies = Vacancy::wherePublished(true)->whereIsVacancy(true)->get();
+         $vacancies = Vacancy::wherePublished(true)->whereIsVacancy(true)->orderBy('id', 'desc')->get();
         return response($vacancies);
     }
 
     public function volunteers()
     {
-         $volunteers = Vacancy::wherePublished(true)->whereIsVacancy(false)->get();
+         $volunteers = Vacancy::wherePublished(true)->whereIsVacancy(false)->orderBy('id', 'desc')->get();
         return response($volunteers);
     }
 }
