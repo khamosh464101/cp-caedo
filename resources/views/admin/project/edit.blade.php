@@ -2,7 +2,7 @@
 
     <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-            <h1 class="w-full text-3xl text-black pb-6">Add Project update</h1>
+            <h1 class="w-full text-3xl text-black pb-6">Edit Project update</h1>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
@@ -37,6 +37,11 @@
                     </div>
                 {{--  --}}
                 <div class="mb-2">
+                    <label class="block text-sm text-gray-600" for="message">Main image (370X303)</label>
+                    <input type="file" id="myimage" name="image">
+
+                </div>
+                <div class="mb-2">
                     <label class="block text-sm text-gray-600" for="message">Thumpnail 1 (371X252)</label>
                     <input type="file" id="myimage" name="thumpnail1">
                 </div>
@@ -46,12 +51,8 @@
                 </div>
       
   
-                    <div class="mb-2">
-                        <label class="block text-sm text-gray-600" for="message">Image</label>
-                        <input type="file" id="myimage" name="image">
-
-                    </div>
-                    <div class="mb-1">
+                    
+                <div class="mb-1">
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
                     <input type="date" id="date" value="{{ date('Y-m-d', strtotime($project->date)) }}" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                 </div>

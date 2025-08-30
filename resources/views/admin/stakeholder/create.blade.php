@@ -33,7 +33,7 @@
                 {{--  --}}
          
                 <div class="mb-2">
-                    <label class="block text-sm text-gray-600" for="message">Image</label>
+                    <label class="block text-sm text-gray-600" for="message">Image (200X150)</label>
                     <input required type="file" id="myimage" name="image">
 
                 </div>

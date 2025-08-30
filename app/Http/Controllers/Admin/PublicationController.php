@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Publication;
 use App\Http\Requests\Admin\PublicationRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class PublicationController extends Controller
 {
@@ -36,14 +37,18 @@ class PublicationController extends Controller
     public function store(PublicationRequest $request)
     {
         $publication_data = $request->safe()->except(['image', 'file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/publication');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/publication', $new_file_name);
             $publication_data['image'] = $get_file;
         }
 
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/publication');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/publication', $new_file_name);
             $publication_data['file'] = $get_file;
         }
 
@@ -75,14 +80,18 @@ class PublicationController extends Controller
     public function update(PublicationRequest $request, Publication $publication)
     {
         $publication_data = $request->safe()->except(['image', 'file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/posts');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/publication', $new_file_name);
             $publication_data['image'] = $get_file;
         }
 
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/publication');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/publication', $new_file_name);
             $publication_data['file'] = $get_file;
         }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Procurement;
 use App\Http\Requests\Admin\ProcurementRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class ProcurementController extends Controller
 {
@@ -34,9 +35,11 @@ class ProcurementController extends Controller
     public function store(ProcurementRequest $request)
     {
         $procurement_data = $request->safe()->except('file');
-
+        $vc = new VacancyController;
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/procurement');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/procurement', $new_file_name);
             $procurement_data['file'] = $get_file;
         }
 
@@ -66,9 +69,11 @@ class ProcurementController extends Controller
     public function update(ProcurementRequest $request, Procurement $procurement)
     {
         $procurement_data = $request->safe()->except('file');
-
+        $vc = new VacancyController;
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/procurement');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/procurement', $new_file_name);
             $procurement_data['file'] = $get_file;
         }
 

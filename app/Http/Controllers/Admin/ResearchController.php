@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Research;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ResearchRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class ResearchController extends Controller
 {
@@ -35,9 +36,11 @@ class ResearchController extends Controller
     public function store(ResearchRequest $request)
     {
         $data = $request->safe()->except(['file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('pdf')) {
-            $get_file = $request->file('pdf')->store('pdfs/research');
+            $file = $request->file('pdf');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/research', $new_file_name);
             $data['pdf'] = $get_file;
         }
 
@@ -68,9 +71,11 @@ class ResearchController extends Controller
     {
      
         $data = $request->safe()->except(['file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('pdf')) {
-            $get_file = $request->file('pdf')->store('pdfs/research');
+            $file = $request->file('pdf');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/research', $new_file_name);
             $data['pdf'] = $get_file;
         }
 

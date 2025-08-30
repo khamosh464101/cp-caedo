@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stakeholder;
 use App\Http\Requests\Admin\StakeholderRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class StakeholderController extends Controller
 {
@@ -36,9 +37,11 @@ class StakeholderController extends Controller
     public function store(StakeholderRequest $request)
     {
         $stakeholder_data = $request->safe()->except(['image']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/stakeholder');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/stakeholder', $new_file_name);
             $stakeholder_data['image'] = $get_file;
         }
 
@@ -70,9 +73,11 @@ class StakeholderController extends Controller
     public function update(StakeholderRequest $request, Stakeholder $stakeholder)
     {
         $stakeholder_data = $request->safe()->except(['image']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/stakeholder');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/stakeholder', $new_file_name);
             $stakeholder_data['image'] = $get_file;
         }
 

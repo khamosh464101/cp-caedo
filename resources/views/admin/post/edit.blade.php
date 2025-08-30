@@ -2,7 +2,7 @@
 
     <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-            <h1 class="w-full text-3xl text-black pb-6">Add Event</h1>
+            <h1 class="w-full text-3xl text-black pb-6">Edit Event</h1>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
@@ -53,7 +53,7 @@
                         </select>
                     </div>
                     <div class="mb-2">
-                        <label class="block text-sm text-gray-600" for="message">Image</label>
+                        <label class="block text-sm text-gray-600" for="message">Detail Image (770X407)</label>
                         <input type="file" id="myimage" name="image">
 
                     </div>

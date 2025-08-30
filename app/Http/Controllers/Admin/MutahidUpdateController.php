@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MutahidUpdate;
 use App\Http\Requests\Admin\MutahidUpdateRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class MutahidUpdateController extends Controller
 {
@@ -32,17 +33,25 @@ class MutahidUpdateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(MutahidUpdateRequest $request)
     {
         $mu_data = $request->safe()->except(['file', 'image']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/mutahid');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/mutahid', $new_file_name);
             $mu_data['file'] = $get_file;
         }
 
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('pdfs/mutahid');
+            // Get the file from the request
+            $file = $request->file('image');
+            // Generate the new file name
+            $new_file_name = $vc->generateFileName($file);
+            // Store the file with the new name
+            $get_file = $file->storeAs('pdfs/mutahid', $new_file_name);
             $mu_data['image'] = $get_file;
         }
 
@@ -75,13 +84,20 @@ class MutahidUpdateController extends Controller
         $mutahid_data = $request->safe()->except(['file', 'image']);
 
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/mutahid');
-            $mutahid_data['file'] = $get_file;
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/mutahid', $new_file_name);
+            $mu_data['file'] = $get_file;
         }
 
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('pdfs/mutahid');
-            $mutahid_data['image'] = $get_file;
+            // Get the file from the request
+            $file = $request->file('image');
+            // Generate the new file name
+            $new_file_name = $vc->generateFileName($file);
+            // Store the file with the new name
+            $get_file = $file->storeAs('pdfs/mutahid', $new_file_name);
+            $mu_data['image'] = $get_file;
         }
 
         $mutahid->update($mutahid_data);

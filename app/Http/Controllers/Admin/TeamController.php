@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Http\Requests\Admin\TeamRequest;
+use App\Http\Controllers\Admin\VacancyController;
 
 class TeamController extends Controller
 {
@@ -29,14 +30,18 @@ class TeamController extends Controller
     public function store(TeamRequest $request)
     {
         $team_data = $request->safe()->except(['avatar', 'file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('avatar')) {
-            $get_file = $request->file('avatar')->store('images/team');
+            $file = $request->file('avatar');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/team', $new_file_name);
             $team_data['avatar'] = $get_file;
         }
 
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/team');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/team', $new_file_name);
             $team_data['file'] = $get_file;
         }
 
@@ -66,14 +71,18 @@ class TeamController extends Controller
     public function update(TeamRequest $request, Team $team)
     {
         $team_data = $request->safe()->except(['image', 'file']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('avatar')) {
-            $get_file = $request->file('avatar')->store('images/posts');
+            $file = $request->file('avatar');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/team', $new_file_name);
             $team_data['avatar'] = $get_file;
         }
 
         if ($request->hasfile('file')) {
-            $get_file = $request->file('file')->store('pdfs/team');
+            $file = $request->file('file');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('pdfs/team', $new_file_name);
             $team_data['file'] = $get_file;
         }
 

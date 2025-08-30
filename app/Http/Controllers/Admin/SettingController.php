@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateSettingRequest;
 use App\Models\Setting;
 use App\Http\Requests\Admin\SettingRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\VacancyController;
 
 class SettingController extends Controller
 {
@@ -27,8 +28,11 @@ class SettingController extends Controller
         $setting_data = $request->safe();
         if ($setting->type == 'image') {
             $setting_data = $request->safe()->except('field_value');
+            $vc = new VacancyController;
             if ($request->hasfile('field_value')) {
-                $get_file = $request->file('field_value')->store('images/setting');
+                $file = $request->file('field_value');
+                $new_file_name = $vc->generateFileName($file);
+                $get_file = $file->storeAs('images/setting', $new_file_name);
                 $setting_data['field_value'] = $get_file;
             }
             

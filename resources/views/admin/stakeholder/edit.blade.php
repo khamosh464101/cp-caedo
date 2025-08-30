@@ -2,7 +2,7 @@
 
     <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
         <main class="w-full flex-grow p-6">
-            <h1 class="w-full text-3xl text-black pb-6">Add Stakeholder</h1>
+            <h1 class="w-full text-3xl text-black pb-6">Edit Stakeholder</h1>
 
             <div class="w-full mt-12">
                 <p class="text-xl pb-3 flex items-center">
@@ -41,12 +41,12 @@
                 {{--  --}}
          
                 <div class="mb-2">
-                    <label class="block text-sm text-gray-600" for="message">Image</label>
+                    <label class="block text-sm text-gray-600" for="message">Image (200X150)</label>
                     <input type="file" id="myimage" name="image">
 
                 </div>
                 </div>
-                <button type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded">Add Stakeholder</button>
+                <button type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded">Update Stakeholder</button>
                 </form>
             </div>
         </main>

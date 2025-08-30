@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Traits\SlugCreater;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Admin\VacancyController;
 
 class ProjectController extends Controller
 {
@@ -52,19 +53,25 @@ class ProjectController extends Controller
     {
 
         $project_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/projects');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['image'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail1')) {
-            $get_file = $request->file('thumpnail1')->store('images/projects');
+            $file = $request->file('thumpnail1');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['thumpnail1'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail2')) {
-            $get_file = $request->file('thumpnail2')->store('images/projects');
+            $file = $request->file('thumpnail2');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['thumpnail2'] = $get_file;
         }
 
@@ -95,19 +102,25 @@ class ProjectController extends Controller
     public function update(ProjectRequest $request, Project $project)
     {
         $project_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/projects');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['image'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail1')) {
-            $get_file = $request->file('thumpnail1')->store('images/projects');
+            $file = $request->file('thumpnail1');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['thumpnail1'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail2')) {
-            $get_file = $request->file('thumpnail2')->store('images/projects');
+            $file = $request->file('thumpnail2');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/projects', $new_file_name);
             $project_data['thumpnail2'] = $get_file;
         }
 

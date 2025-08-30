@@ -6,6 +6,11 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script
+      src="https://cdn.tiny.cloud/1/70jrdoqcfp25kfgh7k60aw31mvh5yddhkkhr9v7rqwfxd939/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">

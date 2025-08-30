@@ -189,7 +189,7 @@
         <!-- Desktop Header -->
         <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
             {{-- Search --}}
-            <div class="relative text-lg bg-transparent text-gray-800 rounded">
+            <!-- <div class="relative text-lg bg-transparent text-gray-800 rounded">
                 <div class="flex items-center border-b border-teal-500 py-2">
                     <form action="{{ route('admin.post.search') }}" method="GET">
                     <input class="bg-transparent border-none mr-3 px-2 leading-tight focus:outline-none" type="text"
@@ -205,7 +205,7 @@
                         </svg>
                     </button>
                 </div>
-            </div>
+            </div> -->
             <div class="w-1/2"></div>
             <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
                 <button @click="isOpen = !isOpen"
@@ -329,8 +329,8 @@
         {{ $slot }}
 
         <footer class="w-full bg-white text-right p-4">
-            ControlPanel by <a target="_blank" href="https://davidgrzyb.com" class="underline">David Grzyb</a> |
-            Developed by <a target="_blank" href="https://linkedin.com/in/elgammal" class="underline">Yasser Elgammal</a>.
+            ControlPanel by <a target="_blank" href="https://momtazhost.com" class="underline">Momtaz Host Co.</a> |
+            Developed by <a href="#" class="underline">Azim Khamosh</a>.
         </footer>
     </div>
 

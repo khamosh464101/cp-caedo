@@ -10,6 +10,7 @@ use App\Models\Tag;
 use App\Traits\SlugCreater;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Admin\VacancyController;
 
 class PostController extends Controller
 {
@@ -53,20 +54,27 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $post_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
-
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/posts');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
             $post_data['image'] = $get_file;
+
         }
 
         if ($request->hasfile('thumpnail1')) {
-            $get_file = $request->file('thumpnail1')->store('images/posts');
+            $file = $request->file('thumpnail1');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
             $post_data['thumpnail1'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail2')) {
-            $get_file = $request->file('thumpnail2')->store('images/posts');
-            $post_data['thumpnail2'] = $get_file;
+            $file = $request->file('thumpnail12');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
+            $post_data['thumpnail12'] = $get_file;
         }
 
         $post = Post::create($post_data);
@@ -102,19 +110,25 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
         $post_data = $request->safe()->except(['image', 'thumpnail1', 'thumpnail2']);
-    
+        $vc = new VacancyController;
         if ($request->hasfile('image')) {
-            $get_file = $request->file('image')->store('images/posts');
+            $file = $request->file('image');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
             $post_data['image'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail1')) {
-            $get_file = $request->file('thumpnail1')->store('images/posts');
+            $file = $request->file('thumpnail1');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
             $post_data['thumpnail1'] = $get_file;
         }
 
         if ($request->hasfile('thumpnail2')) {
-            $get_file = $request->file('thumpnail2')->store('images/posts');
+            $file = $request->file('thumpnail2');
+            $new_file_name = $vc->generateFileName($file);
+            $get_file = $file->storeAs('images/posts', $new_file_name);
             $post_data['thumpnail2'] = $get_file;
         }
 
