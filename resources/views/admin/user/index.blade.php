@@ -8,6 +8,10 @@
                 <p class="text-xl pb-3 flex items-center">
                     <i class="fas fa-list mr-3"></i> Users Records
                 </p>
+                @can('create', 'App\Models\Post')
+                    <button class="px-4 py-1 text-white font-light tracking-wider bg-blue-600 rounded mb-2"
+                        onclick="location.href='{{ route('admin.user.create') }}';">Add User</button>
+                @endcan
                 <div class="bg-white overflow-auto">
                     <table class="text-left w-full border-collapse">
                         <thead>
@@ -26,7 +30,7 @@
                                 <td class="py-4 px-6 border-b border-grey-light">{{ $user->role->name }}</td>
                                 <td class="py-4 px-6 border-b border-grey-light">
 
-                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.user.edit', $user->id) }}';">Assign Role</button>
+                                    <button class="px-4 py-1 text-white font-light tracking-wider bg-green-600 rounded" type="button"  onclick="location.href='{{ route('admin.user.edit', $user->id) }}';">Edit</button>
                                     <form type="submit" method="POST" style="display: inline" action="{{ route('admin.user.destroy', $user->id)}}" onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')

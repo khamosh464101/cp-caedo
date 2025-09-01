@@ -216,7 +216,7 @@
                     class="h-full w-full fixed inset-0 cursor-default"></button>
                 <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
                     <a href="{{ route('admin.account.index') }}" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                    <a href="http://linkedin.com" class="block px-4 py-2 account-link hover:text-white">Support</a>
+                    <!-- <a href="http://linkedin.com" class="block px-4 py-2 account-link hover:text-white">Support</a> -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="block px-4 py-2 account-link hover:text-white w-full text-left">Sign Out</button>

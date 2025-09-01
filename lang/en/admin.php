@@ -39,6 +39,8 @@ return [
     'tag_created' => 'Tag Created !',
     'tag_updated' => 'Tag Updated !',
     'tag_deleted' => 'Tag Deleted !',
+    'user_created' => 'User Created !',
+    'user_updated' => 'User Updated !',
     'user_deleted' => 'User Deleted !',
     'role_updated' => 'Role to user Updated !',
 ];

@@ -52,7 +52,7 @@ Route::middleware(['auth', 'can:admin-login'])->name('admin.')->prefix('/')->gro
         Route::get('/page/slug-get', [PageController::class, 'getSlug'])->name('page.getslug');
         Route::resource('/category', CategoryController::class);
         Route::resource('pcategory', ProjectCategoryController::class);
-        Route::resource('/user', UserController::class, ['except' => ['create', 'store', 'show']]);
+        Route::resource('/user', UserController::class, ['except' => [ 'show']]);
         Route::resource('/page', PageController::class);
         Route::resource('/role', RoleController::class, ['only' => ['index']]);
     });

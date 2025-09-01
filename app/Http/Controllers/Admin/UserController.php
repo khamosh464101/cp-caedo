@@ -8,6 +8,10 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
+
+use Hash;
 
 class UserController extends Controller
 {
@@ -21,6 +25,32 @@ class UserController extends Controller
         $users = User::with('role')->orderBy('id', 'desc')->paginate(15);
 
         return view('admin.user.index', compact('users'));
+    }
+
+    public function create()
+    {
+        $roles = Role::all();
+        return view('admin.user.create', compact('roles'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'role_id' => 'required|exists:roles,id',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role_id' => $request->role_id,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return to_route('admin.user.index')->with('message', trans('admin.user_created'));
     }
 
     /**
@@ -45,9 +75,29 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validated = $request->validate(['role_id' => 'required|exists:roles,id']);
-        $user->role_id = $validated['role_id'];
-        $user->update();
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => [
+                    'required',
+                    'string',
+                    'email',
+                    'max:255',
+                    Rule::unique(User::class)->ignore($user->id),
+                ],
+            'role_id' => 'required|exists:roles,id',
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role_id' => $request->role_id
+        ]);
+        if ($request->password) {
+            $user->update(['password' => Hash::make($request->password)]);
+                        
+        }
 
         return to_route('admin.user.index')->with('message', trans('admin.role_updated'));
     }
