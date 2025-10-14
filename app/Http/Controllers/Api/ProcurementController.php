@@ -13,13 +13,13 @@ class ProcurementController extends Controller
 
     public function itbs()
     {
-         $itbs = Procurement::wherePublished(true)->whereItbNoa(true)->get();
+         $itbs = Procurement::wherePublished(true)->whereItbNoa(true)->latest()->get();
         return response($itbs);
     }
 
     public function noas()
     {
-         $noas = Procurement::wherePublished(true)->whereItbNoa(false)->get();
+         $noas = Procurement::wherePublished(true)->whereItbNoa(false)->latest()->get();
         return response($noas);
     }
 }
