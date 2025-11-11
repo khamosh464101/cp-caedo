@@ -12,16 +12,20 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // CSRF exceptions
+        // CSRF exceptions for SPA domains
         $middleware->validateCsrfTokens(except: [
             'http://127.0.0.1:8000/*',
             'https://cp.caedo.org/*',
+            'https://un.momtazhost.com/*',
         ]);
 
-        // Stateful API for Sanctum
-        $middleware->statefulApi();
+        // Stateful API (important for Sanctum)
+        $middleware->statefulApi([
+            'cp.caedo.org',
+            'un.momtazhost.com',
+        ]);
 
-        // Middleware aliases
+        // Middleware aliases if needed
         $middleware->alias([
             'cors' => \Fruitcake\Cors\HandleCors::class,
         ]);
