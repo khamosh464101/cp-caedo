@@ -40,7 +40,7 @@
                             @foreach ($settings as $setting)
                                 <tr class="hover:bg-grey-lighter">
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $setting->id }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $setting->field_name }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light break-all">{{ $setting->field_name }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light w-14 break-all">{{ $setting->field_value }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">
                                     {{$setting->type}}
