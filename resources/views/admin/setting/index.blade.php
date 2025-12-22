@@ -13,7 +13,7 @@
                         onclick="location.href='{{ route('admin.setting.create') }}';">Add Setting</button>
                 @endcan -->
                 <div class="bg-white overflow-auto">
-                    <table class="text-left w-full border-collapse">
+                    <table class="text-left table-fixed w-full border-collapse">
                         <thead>
                             <tr>
                                 <th
@@ -41,7 +41,7 @@
                                 <tr class="hover:bg-grey-lighter">
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $setting->id }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $setting->field_name }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $setting->field_value }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light w-14 break-all">{{ $setting->field_value }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">
                                     {{$setting->type}}
                                     </td>
