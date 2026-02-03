@@ -71,10 +71,10 @@ class PostController extends Controller
         }
 
         if ($request->hasfile('thumpnail2')) {
-            $file = $request->file('thumpnail12');
+            $file = $request->file('thumpnail2');
             $new_file_name = $vc->generateFileName($file);
             $get_file = $file->storeAs('images/posts', $new_file_name);
-            $post_data['thumpnail12'] = $get_file;
+            $post_data['thumpnail2'] = $get_file;
         }
 
         $post = Post::create($post_data);
